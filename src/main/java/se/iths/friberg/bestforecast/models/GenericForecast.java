@@ -1,4 +1,4 @@
-package se.iths.friberg.bestforecast.model;
+package se.iths.friberg.bestforecast.models;
 
 public class GenericForecast{
     
@@ -24,6 +24,10 @@ public class GenericForecast{
     
     public String getTime(){
         return time;
+    }
+    
+    public String formattedTime(){
+        return time.substring(0,16).replace('T',' ');
     }
     
     public void setTime(String time){
@@ -54,5 +58,18 @@ public class GenericForecast{
                 ", temperature=" + temperature +
                 ", humidity=" + humidity +
                 '}';
+    }
+    
+    public String timeToString(){
+        return "The best weather forecast for Liljeholmen at: "+ formattedTime();
+    }
+    public String providerToString(){
+        return "Provider: " + origin;
+    }
+    public String tempToString(){
+        return "Temperature: " + temperature + "°C";
+    }
+    public String humidityToString(){
+        return "Humidity: " + humidity + "%";
     }
 }

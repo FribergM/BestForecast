@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Best Forecast</title>
+</head>
+<body style="background-color: lightblue">
+    <div style="font-size: 32px">
+        <span style="font-weight: bold" th:text="${bestForecast.timeToString()}"></span><br/>
+        <span th:text="${bestForecast.providerToString()}"></span><br/>
+        <span th:text="${bestForecast.tempToString()}"></span><br/>
+        <span th:text="${bestForecast.humidityToString()}"></span><br/>
+    </div>
+</body>
+</html>

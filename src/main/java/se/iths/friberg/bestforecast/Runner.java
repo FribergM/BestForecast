@@ -2,20 +2,31 @@ package se.iths.friberg.bestforecast;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-import se.iths.friberg.bestforecast.service.ForecastConverter;
+import se.iths.friberg.bestforecast.models.GenericForecast;
+import se.iths.friberg.bestforecast.services.ForecastService;
 
-@Component
+import java.util.List;
+
 public class Runner implements CommandLineRunner{
+    
+    ForecastService service;
+    
+    public Runner(ForecastService service){
+        this.service = service;
+    }
+    
     @Override
     public void run(String... args) throws Exception{
-        String date1 = "2024-05-25T20:00:00Z";
-        String date2 = "2024-05-25T00:00";
+        long start = System.currentTimeMillis();
+        GenericForecast bestForecast = service.getBestForecast();
+        List<GenericForecast> forecasts = service.tomorrowsForecasts();
         
-        date1 = ForecastConverter.normalizeTimestamp(date1);
-        date2 = ForecastConverter.normalizeTimestamp(date2);
-        
-        System.out.println(date1);
-        System.out.println(date2);
+        System.out.println(bestForecast+"\n");
+        for(GenericForecast f : forecasts){
+            System.out.println(f);
+        }
+        long end = System.currentTimeMillis();
+        System.out.println("Milliseconds: "+(end-start));
         
     }
 }

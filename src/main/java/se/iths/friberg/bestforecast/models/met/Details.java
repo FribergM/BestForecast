@@ -1,5 +1,5 @@
 
-package se.iths.friberg.bestforecast.data.met;
+package se.iths.friberg.bestforecast.models.met;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;

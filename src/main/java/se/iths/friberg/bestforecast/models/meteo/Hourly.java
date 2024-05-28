@@ -1,5 +1,5 @@
 
-package se.iths.friberg.bestforecast.data.meteo;
+package se.iths.friberg.bestforecast.models.meteo;
 
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -14,8 +14,6 @@ public class Hourly {
     private List<Double> temperature;
     @JsonProperty("relative_humidity_2m")
     private List<Integer> humidity;
-    @JsonProperty("precipitation")
-    private List<Double> precipitation;
     
     public List<String> getTime() {
         return time;
@@ -39,14 +37,6 @@ public class Hourly {
     
     public void setHumidity(List<Integer> humidity) {
         this.humidity = humidity;
-    }
-    
-    public List<Double> getPrecipitation() {
-        return precipitation;
-    }
-    
-    public void setPrecipitation(List<Double> precipitation) {
-        this.precipitation = precipitation;
     }
 
 }

@@ -1,15 +1,15 @@
-package se.iths.friberg.bestforecast.data.communication;
+package se.iths.friberg.bestforecast.data;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
-import se.iths.friberg.bestforecast.data.met.Met;
-import se.iths.friberg.bestforecast.data.meteo.Meteo;
-import se.iths.friberg.bestforecast.data.smhi.Smhi;
+import se.iths.friberg.bestforecast.models.met.Met;
+import se.iths.friberg.bestforecast.models.meteo.Meteo;
+import se.iths.friberg.bestforecast.models.smhi.Smhi;
 
 import java.util.concurrent.CompletableFuture;
 
 @Component
-public class WeatherWebClient{
+public class WeatherRESTClient{
     
     private final WebClient client = WebClient.create();
     
@@ -43,7 +43,7 @@ public class WeatherWebClient{
         CompletableFuture<Meteo> meteoFuture = new CompletableFuture<>();
         client
                 .get()
-                .uri("https://api.open-meteo.com/v1/dwd-icon?latitude=59.312233&longitude=18.017975&hourly=temperature_2m,relative_humidity_2m,precipitation")
+                .uri("https://api.open-meteo.com/v1/dwd-icon?latitude=59.3110&longitude=18.0300&hourly=temperature_2m,relative_humidity_2m")
                 .retrieve()
                 .bodyToMono(Meteo.class)
                 .subscribe(

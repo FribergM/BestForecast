@@ -1,5 +1,5 @@
 
-package se.iths.friberg.bestforecast.data.meteo;
+package se.iths.friberg.bestforecast.models.meteo;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;

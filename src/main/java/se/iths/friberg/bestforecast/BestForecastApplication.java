@@ -10,8 +10,4 @@ public class BestForecastApplication{
         SpringApplication.run(BestForecastApplication.class, args);
     }
     
-    
-    //TODO
-    // - Create forecast converter classes implementing the same interface
-    // - Create generic forecast class
 }
