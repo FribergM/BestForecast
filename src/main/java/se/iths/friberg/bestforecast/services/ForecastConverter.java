@@ -50,7 +50,6 @@ public class ForecastConverter{
         
         List<TimeSeries> hourlyForecasts = smhi.getTimeSeries();
         
-        int loopDuration = hourlyForecasts.size();
         for(TimeSeries hourlyForecast : hourlyForecasts){
             String timestamp = hourlyForecast.getValidTime();
             timestamp = normalizeTimestamp(timestamp);

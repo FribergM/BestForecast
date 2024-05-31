@@ -15,6 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 import static se.iths.friberg.bestforecast.services.ScoreCalculator.calculateForecastScore;
 
@@ -49,7 +51,7 @@ public class ForecastService{
         }
     }
     
-    public List<GenericForecast> tomorrowsForecasts(){
+    private List<GenericForecast> tomorrowsForecasts(){
         List<GenericForecast> allForeCasts = getAllForecasts();
 
         LocalDateTime tomorrowDate = LocalDateTime.now().plusDays(1);
@@ -77,8 +79,8 @@ public class ForecastService{
         CompletableFuture<Void> allFutures = CompletableFuture.allOf(metFuture,smhiFuture,meteoFuture);
         
         try{
-            allFutures.get();
-        }catch(InterruptedException | ExecutionException e){
+            allFutures.get(10, TimeUnit.SECONDS);
+        }catch(InterruptedException | ExecutionException | TimeoutException e){
             throw new ForecastDataException("Error while fetching forecasts: "+ e.getMessage());
         }
         
